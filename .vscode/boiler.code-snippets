@@ -12,7 +12,10 @@
             "#include<bits/stdc++.h>",
             "using namespace std;\n",
             "int main()",
-            "{\n\t$0\n ",
+            "{$0 ",
+            "\tios_base::sync_with_stdio(false);",
+            "\tcin.tie(NULL);\n",
+            "\t",
             "\treturn 0;",
             "}"
         ],
