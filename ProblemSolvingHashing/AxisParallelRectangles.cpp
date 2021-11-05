@@ -1,6 +1,6 @@
 #include <bits/stdc++.h>
 using namespace std;
-// Not working 
+// find number of rectangles parrallel to x and y axis
 class Point
 {
 public:
@@ -24,7 +24,7 @@ public:
         {
             return p1.y < p2.y;
         }
-        return p1.x < p2.y;
+        return p1.x < p2.x;
     }
 };
 

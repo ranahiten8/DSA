@@ -17,13 +17,11 @@ public:
 class Trie
 {
     Node *root;
-    int cnt;
 
 public:
     Trie()
     {
         root = new Node('\0');
-        cnt = 0;
     }
 
     void insert(char *w)
