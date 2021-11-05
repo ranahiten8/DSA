@@ -22,8 +22,10 @@ int main()
         }
         sort(v.begin(), v.end(), cmp);
 
+        //start picking activities
         int res = 1;
         int fin = v[0].second;
+        //iterate over remaining activities
         for (int i = 1; i < n; i++)
         {
             if (v[i].first >= fin)
