@@ -24,10 +24,13 @@ int main()
             cout << -1 << endl;
             continue;
         }
+        //find load which is to be divided equally
         load = load / n;
         diff = 0;
+        //greedy step
         for (int i = 0; i < n; i++)
         {
+            //find difference b/w final load to be assigned and current load
             diff += (arr[i] - load);
             int ans = max(diff, -diff);
             max_load = max(max_load, ans);

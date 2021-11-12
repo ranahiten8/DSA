@@ -1,98 +1,43 @@
 #include <bits/stdc++.h>
 using namespace std;
-#define ll long long
-
-void dfs(vector<vector<ll>> &graph, vector<ll> &gcd, ll u, ll par)
-{
-    for (auto &to : graph[u])
-    {
-        if (to == par)
-            continue;
-        dfs(graph, gcd, to, u);
-        gcd[u] = __gcd(gcd[u], gcd[to]);
-    }
-}
-
-ll ans = 0;
-
-void dfs1(vector<vector<ll>> &graph, vector<ll> &gcd, ll u, ll par, ll exc, vector<ll> &arr)
-{
-    ll temp = exc;
-    for (auto &to : graph[u])
-    {
-        if (to == par)
-            continue;
-        temp += gcd[to];
-    }
-    ans = max(ans, temp);
-    ll transfer = __gcd(arr[u], exc);
-    ll n = graph[u].size();
-    if (par != -1)
-    {
-        n--;
-    }
-    vector<ll> pref(n + 2, transfer), suff(n + 2, transfer);
-    ll idx = 0;
-    for (auto &to : graph[u])
-    {
-        if (to == par)
-            continue;
-        idx++;
-        pref[idx] = __gcd(pref[idx], gcd[to]);
-        suff[idx] = __gcd(suff[idx], gcd[to]);
-    }
-    for (ll i = 1; i <= n; i++)
-    {
-        pref[i] = __gcd(pref[i], pref[i - 1]);
-    }
-    for (ll i = n; i >= 1; i--)
-    {
-        suff[i] = __gcd(suff[i], suff[i + 1]);
-    }
-    idx = 0;
-    for (auto &to : graph[u])
-    {
-        if (to == par)
-            continue;
-        idx++;
-        ll combine = __gcd(pref[idx - 1], suff[idx + 1]);
-        dfs1(graph, gcd, to, u, combine, arr);
-    }
-}
-
-void solve()
-{
-    ll n;
-    cin >> n;
-    ans = 0;
-    vector<vector<ll>> graph(n);
-    for (ll i = 0; i < n - 1; i++)
-    {
-        ll u, v;
-        cin >> u >> v;
-        u--, v--;
-        graph[u].push_back(v);
-        graph[v].push_back(u);
-    }
-    vector<ll> arr(n);
-    for (ll i = 0; i < n; i++)
-    {
-        cin >> arr[i];
-    }
-    vector<ll> gcd(arr.begin(), arr.end());
-    dfs(graph, gcd, 0, -1);
-    dfs1(graph, gcd, 0, -1, 0, arr);
-    cout << ans << endl;
-}
 
 int main()
 {
-    ios_base::sync_with_stdio(false);
-    cin.tie(NULL);
-    ll t;
+    int t;
     cin >> t;
     while (t--)
     {
-        solve();
+        int n;
+        cin >> n;
+        vector<string> s;
+        vector<pair<int, int>> v;
+        for (int i = 0; i < n; ++i)
+        {
+            string m;
+            cin >> m;
+            s.push_back(m);
+            v.push_back(make_pair(s[i][0] - 'A', s[i][2] - 'A'));
+        }
+        for (int i = 0; i < n; ++i)
+        {
+            for (int j = i+1; j < n; ++j)
+            {
+                if(__builtin_popcount(v[i].first)==__builtin_popcount(v[j].second))
+                {
+                    v[i].first=-1;
+                    v[j].second=-1;
+                    break;
+                }
+            }
+        }
+        bool flag=1;
+        for (int i = 0; i < n; ++i)
+        {
+            if(v[i].first!=-1 or v[i].second!=-1)
+                flag=0;
+            break;
+        }
+        cout<<flag;
     }
+    return 0;
 }
