@@ -1,6 +1,7 @@
 #include <bits/stdc++.h>
 using namespace std;
 // find number of rectangles parrallel to x and y axis
+
 class Point
 {
 public:
