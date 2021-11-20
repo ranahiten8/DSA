@@ -1,4 +1,4 @@
-// Best : Used when there are lot of values of n/queries to computer prime factors for
+// Best : Used when there are lot of values of n/queries to compute prime factors for
 #include <iostream>
 #include <vector>
 using namespace std;
