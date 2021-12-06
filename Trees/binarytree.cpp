@@ -352,6 +352,7 @@ node *printrightview(node *root, int level, int &maxlevel)
     printrightview(root->left, level + 1, maxlevel);
 }
 
+//assumption both a and b are present in tree and all node are unique
 node *lca(node *root, int a, int b)
 {
     if (root == NULL)
