@@ -88,13 +88,13 @@ void printSolution(int dist[][V])
 int main()
 {
     /* Let us create the following weighted graph
-            10
-    (0)------->(3)
-        |	 /|\
-    5 |	 |
-        |	 | 1
-    \|/	 |
-    (1)------->(2)
+        10
+       (0)------->(3)
+        |         /|\
+      5 |          |
+        |          | 1
+       \|/         |
+       (1)------->(2)
             3	 */
     int graph[V][V] = {{0, 5, INF, 10},
                        {INF, 0, 3, INF},
@@ -105,4 +105,3 @@ int main()
     floydWarshall(graph);
     return 0;
 }
-
